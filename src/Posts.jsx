@@ -17,6 +17,10 @@ export function Posts() {
     return <h3>Loading...</h3>;
   }
 
+  if (isError) {
+    return <h3>Error fetching posts</h3>;
+  }
+
   return (
     <>
       <ul>
