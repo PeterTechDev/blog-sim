@@ -40,6 +40,7 @@ export function PostDetail({ post, deleteMutation, updateTitleMutation }) {
         {updateTitleMutation.isError && (
           <p style={{ color: "red" }}>{updateTitleMutation.error.toString()}</p>
         )}
+        {updateTitleMutation.isSuccess && <p>Post title (not )updated!</p>}
       </div>
       <p>{post.body.replace(/"/g, "&quot;")}</p>
       <h4>Comments</h4>
