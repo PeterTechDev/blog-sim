@@ -11,6 +11,10 @@ export function Posts() {
 
   const queryClient = useQueryClient();
 
+  const updatePostTitleMutation = useMutation({
+    mutationFn: (postId) => updatePost(postId),
+  });
+
   const deletePostMutation = useMutation({
     mutationFn: (postId) => deletePost(postId),
   });
@@ -53,6 +57,7 @@ export function Posts() {
             className="post-title"
             onClick={() => {
               deletePostMutation.reset();
+              updatePostTitleMutation.reset();
               setSelectedPost(post);
             }}
           >
@@ -81,7 +86,11 @@ export function Posts() {
       </div>
       <hr />
       {selectedPost && (
-        <PostDetail post={selectedPost} deleteMutation={deletePostMutation} />
+        <PostDetail
+          post={selectedPost}
+          deleteMutation={deletePostMutation}
+          updateTitleMutation={updatePostTitleMutation}
+        />
       )}
     </>
   );
